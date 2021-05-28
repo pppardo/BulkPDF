@@ -15,9 +15,7 @@ namespace BulkPDF
         public string DataSourceValue;
         public bool MakeReadOnly;
         public bool UseValueFromDataSource;
-        public int Row;
-
-
+        public int Row=1;
         /// <summary>
         /// Rellena el objeto con los datos de la configuración
         /// </summary>

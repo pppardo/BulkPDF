@@ -64,6 +64,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Opciones.cs" />
     <Compile Include="IDataSource.cs" />
     <Compile Include="PDF.cs" />
     <Compile Include="PDFField.cs" />

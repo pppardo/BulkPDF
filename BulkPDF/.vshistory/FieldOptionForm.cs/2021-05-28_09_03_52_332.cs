@@ -9,8 +9,6 @@ using System.Windows.Forms;
 
 namespace BulkPDF
 {
-    //TODO Añadir la posibilidad de usar fuentes alternativas como otra tabla/hoja(sheet) con fila/columna para cabeceras y pies
-    //TODO Añadir la posibilidad de usar fechas (dia mes año) hora,  y texto fijo.
     public partial class FieldOptionForm : Form
     {
         public static Point SavedLocation;
@@ -59,8 +57,6 @@ namespace BulkPDF
 
             cbReadOnly.Checked = pdfField.MakeReadOnly;
             cbReadOnly_CheckedChanged(null, null);
-            cbRow.Value = pdfField.Row == 0 ? 1 : pdfField.Row;
-            numericUpDown1_ValueChanged(null, null);
         }
 
         private void cbUseValueFromDataSource_CheckedChanged(object sender, EventArgs e)
@@ -88,10 +84,6 @@ namespace BulkPDF
         private void cbReadOnly_CheckedChanged(object sender, EventArgs e)
         {
             pdfField.MakeReadOnly = cbReadOnly.Checked;
-        }
-        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
-        {
-            pdfField.Row= (int)cbRow.Value;
         }
     }
 }

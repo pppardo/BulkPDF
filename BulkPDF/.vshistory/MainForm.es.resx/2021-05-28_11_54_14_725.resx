@@ -112,66 +112,9 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CellButtonSelect" xml:space="preserve">
-    <value>Select</value>
-  </data>
-  <data name="ExceptionConfigurationFileIsCorrupted" xml:space="preserve">
-    <value>The configuration file could not be loaded.</value>
-  </data>
-  <data name="ExceptionPDFFileAlreadyExistsAndInUse" xml:space="preserve">
-    <value>One or more PDF files with the selected name already exists and is use by another application. Please close the other application and restart the creation process.</value>
-  </data>
-  <data name="ExceptionPDFIsCorrupted" xml:space="preserve">
-    <value>PDF file is corrupted. [{0}]</value>
-  </data>
-  <data name="ExceptionSpreadsheetAlreadyInUse" xml:space="preserve">
-    <value>The spreadsheet is in use by another application. Please close the other application and reselect the spreadsheet.</value>
-  </data>
-  <data name="ExceptionSpreadsheetIsCorrupted" xml:space="preserve">
-    <value>Spreadsheet file is corrupted.</value>
-  </data>
-  <data name="FilterBlanc" xml:space="preserve">
-    <value>Is Blanc</value>
-  </data>
-  <data name="FilterNoBlanc" xml:space="preserve">
-    <value>Not is Blanc</value>
-  </data>
-  <data name="MessageAborted" xml:space="preserve">
-    <value>Aborted.</value>
-  </data>
-  <data name="MessageAreYouSure" xml:space="preserve">
-    <value>Are you sure?</value>
-  </data>
-  <data name="MessageCreateNPDFFilesInDir" xml:space="preserve">
-    <value>Create {0} PDF files in {1}?</value>
-  </data>
-  <data name="MessageFilenameNotUnique" xml:space="preserve">
-    <value>The filenames are not unique.</value>
-  </data>
-  <data name="MessageFinished" xml:space="preserve">
-    <value>Finished.</value>
-  </data>
-  <data name="MessageNoOutputDirSelected" xml:space="preserve">
-    <value>Please select a output directory.</value>
-  </data>
-  <data name="MessageNoPDFSelected" xml:space="preserve">
-    <value>Please select a pdf file to continue.</value>
-  </data>
-  <data name="MessageNoUsableRows" xml:space="preserve">
-    <value>No usable rows was founded in this spreadsheet.</value>
-  </data>
-  <data name="MessageOutputDirNotExist" xml:space="preserve">
-    <value>The selected output directory does not exist.</value>
-  </data>
-  <data name="MessageSelectConfiguration" xml:space="preserve">
-    <value>Please select a configuration file.</value>
-  </data>
-  <data name="MessageSelectSpreadsheet" xml:space="preserve">
-    <value>Please select a spreadsheet file to continue.</value>
-  </data>
 </root>

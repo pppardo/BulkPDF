@@ -413,7 +413,7 @@ namespace BulkPDF
 
             foreach (FillData dataSet in filler.GetDataForms(pdfFields))
             {
-                PdfReader pdfReader2 = new PdfReader(GeneratePDFBytes(dataSet.listaCampos, filler.opt));
+                PdfReader pdfReader2 = new PdfReader(GeneratePDFBytes(dataSet.listaCampos, filler.opt.Flatten, filler.opt.Finalize, filler.opt.Unicode, filler.opt.CustomFont));
                 for (int i = 0; i < pdfReader2.NumberOfPages; i++)
                 {
                     copy.AddPage(copy.GetImportedPage(pdfReader2, i+1));

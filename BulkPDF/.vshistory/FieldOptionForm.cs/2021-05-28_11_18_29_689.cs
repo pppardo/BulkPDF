@@ -59,8 +59,6 @@ namespace BulkPDF
 
             cbReadOnly.Checked = pdfField.MakeReadOnly;
             cbReadOnly_CheckedChanged(null, null);
-            cbRow.Value = pdfField.Row == 0 ? 1 : pdfField.Row;
-            numericUpDown1_ValueChanged(null, null);
         }
 
         private void cbUseValueFromDataSource_CheckedChanged(object sender, EventArgs e)

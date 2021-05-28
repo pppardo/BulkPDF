@@ -33,16 +33,13 @@
             this.bSet = new System.Windows.Forms.Button();
             this.cbUseValueFromDataSource = new System.Windows.Forms.CheckBox();
             this.cbReadOnly = new System.Windows.Forms.CheckBox();
-            this.cbRow = new System.Windows.Forms.NumericUpDown();
-            this.labelRow = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.cbRow)).BeginInit();
             this.SuspendLayout();
             // 
             // cbDataSourceColumns
             // 
+            resources.ApplyResources(this.cbDataSourceColumns, "cbDataSourceColumns");
             this.cbDataSourceColumns.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDataSourceColumns.FormattingEnabled = true;
-            resources.ApplyResources(this.cbDataSourceColumns, "cbDataSourceColumns");
             this.cbDataSourceColumns.Name = "cbDataSourceColumns";
             this.cbDataSourceColumns.SelectedIndexChanged += new System.EventHandler(this.cbDataSourceColumns_SelectedIndexChanged);
             // 
@@ -67,33 +64,10 @@
             this.cbReadOnly.UseVisualStyleBackColor = true;
             this.cbReadOnly.CheckedChanged += new System.EventHandler(this.cbReadOnly_CheckedChanged);
             // 
-            // cbRow
-            // 
-            resources.ApplyResources(this.cbRow, "cbRow");
-            this.cbRow.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.cbRow.Name = "cbRow";
-            this.cbRow.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.cbRow.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
-            // 
-            // labelRow
-            // 
-            resources.ApplyResources(this.labelRow, "labelRow");
-            this.labelRow.Name = "labelRow";
-            // 
             // FieldOptionForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.labelRow);
-            this.Controls.Add(this.cbRow);
             this.Controls.Add(this.cbReadOnly);
             this.Controls.Add(this.cbUseValueFromDataSource);
             this.Controls.Add(this.bSet);
@@ -101,7 +75,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FieldOptionForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FieldOptionForm_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.cbRow)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,7 +86,6 @@
         private System.Windows.Forms.Button bSet;
         private System.Windows.Forms.CheckBox cbUseValueFromDataSource;
         private System.Windows.Forms.CheckBox cbReadOnly;
-        private System.Windows.Forms.NumericUpDown cbRow;
-        private System.Windows.Forms.Label labelRow;
+
     }
 }

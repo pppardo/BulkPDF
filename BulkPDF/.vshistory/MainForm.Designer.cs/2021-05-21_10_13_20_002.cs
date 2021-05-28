@@ -70,7 +70,6 @@
             this.bSelectPDF = new System.Windows.Forms.Button();
             this.tpFinish = new System.Windows.Forms.TabPage();
             this.gbOptions = new System.Windows.Forms.GroupBox();
-            this.cbCustomFont = new System.Windows.Forms.CheckBox();
             this.cFilterCheck = new System.Windows.Forms.ComboBox();
             this.cFilterField = new System.Windows.Forms.ComboBox();
             this.cFilter = new System.Windows.Forms.CheckBox();
@@ -103,8 +102,6 @@
             this.cSufix1 = new System.Windows.Forms.TextBox();
             this.cDataSourceColumnsFilename = new System.Windows.Forms.ComboBox();
             this.cPrefix = new System.Windows.Forms.TextBox();
-            this.tbCustomFontPath = new System.Windows.Forms.TextBox();
-            this.bSelectOwnFont = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.wizardPages.SuspendLayout();
             this.tpWelcome.SuspendLayout();
@@ -175,6 +172,7 @@
             // 
             // tpWelcome
             // 
+            resources.ApplyResources(this.tpWelcome, "tpWelcome");
             this.tpWelcome.BackColor = System.Drawing.SystemColors.Control;
             this.tpWelcome.Controls.Add(this.llSupport);
             this.tpWelcome.Controls.Add(this.llBulkPDFde);
@@ -184,7 +182,6 @@
             this.tpWelcome.Controls.Add(this.lBulkPDF);
             this.tpWelcome.Controls.Add(this.bLoadConfiguration);
             this.tpWelcome.Controls.Add(this.llDokumentation);
-            resources.ApplyResources(this.tpWelcome, "tpWelcome");
             this.tpWelcome.Name = "tpWelcome";
             // 
             // llSupport
@@ -244,11 +241,11 @@
             // 
             // tbDataSourceSelect
             // 
+            resources.ApplyResources(this.tbDataSourceSelect, "tbDataSourceSelect");
             this.tbDataSourceSelect.BackColor = System.Drawing.SystemColors.Control;
             this.tbDataSourceSelect.Controls.Add(this.rtbReselectWarning);
             this.tbDataSourceSelect.Controls.Add(this.gbSpreadsheet);
             this.tbDataSourceSelect.Controls.Add(this.gbSpreadsheetInformation);
-            resources.ApplyResources(this.tbDataSourceSelect, "tbDataSourceSelect");
             this.tbDataSourceSelect.Name = "tbDataSourceSelect";
             // 
             // rtbReselectWarning
@@ -340,12 +337,12 @@
             // 
             // tpPDFSelect
             // 
+            resources.ApplyResources(this.tpPDFSelect, "tpPDFSelect");
             this.tpPDFSelect.BackColor = System.Drawing.SystemColors.Control;
             this.tpPDFSelect.Controls.Add(this.tbFormTyp);
             this.tpPDFSelect.Controls.Add(this.dgvBulkPDF);
             this.tpPDFSelect.Controls.Add(this.tbPDF);
             this.tpPDFSelect.Controls.Add(this.bSelectPDF);
-            resources.ApplyResources(this.tpPDFSelect, "tpPDFSelect");
             this.tpPDFSelect.Name = "tpPDFSelect";
             // 
             // tbFormTyp
@@ -356,9 +353,9 @@
             // 
             // dgvBulkPDF
             // 
+            resources.ApplyResources(this.dgvBulkPDF, "dgvBulkPDF");
             this.dgvBulkPDF.AllowUserToAddRows = false;
             this.dgvBulkPDF.AllowUserToDeleteRows = false;
-            resources.ApplyResources(this.dgvBulkPDF, "dgvBulkPDF");
             this.dgvBulkPDF.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvBulkPDF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgvBulkPDF.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -415,20 +412,17 @@
             // 
             // tpFinish
             // 
+            resources.ApplyResources(this.tpFinish, "tpFinish");
             this.tpFinish.BackColor = System.Drawing.SystemColors.Control;
             this.tpFinish.Controls.Add(this.gbOptions);
             this.tpFinish.Controls.Add(this.gbOuput);
             this.tpFinish.Controls.Add(this.bSaveConfiguration);
             this.tpFinish.Controls.Add(this.gbFilename);
-            resources.ApplyResources(this.tpFinish, "tpFinish");
             this.tpFinish.Name = "tpFinish";
             // 
             // gbOptions
             // 
             resources.ApplyResources(this.gbOptions, "gbOptions");
-            this.gbOptions.Controls.Add(this.bSelectOwnFont);
-            this.gbOptions.Controls.Add(this.tbCustomFontPath);
-            this.gbOptions.Controls.Add(this.cbCustomFont);
             this.gbOptions.Controls.Add(this.cFilterCheck);
             this.gbOptions.Controls.Add(this.cFilterField);
             this.gbOptions.Controls.Add(this.cFilter);
@@ -442,12 +436,6 @@
             this.gbOptions.Controls.Add(this.cGroupByColumn);
             this.gbOptions.Name = "gbOptions";
             this.gbOptions.TabStop = false;
-            // 
-            // cbCustomFont
-            // 
-            resources.ApplyResources(this.cbCustomFont, "cbCustomFont");
-            this.cbCustomFont.Name = "cbCustomFont";
-            this.cbCustomFont.UseVisualStyleBackColor = true;
             // 
             // cFilterCheck
             // 
@@ -673,18 +661,6 @@
             this.cPrefix.Name = "cPrefix";
             this.cPrefix.TextChanged += new System.EventHandler(this.cFilenameChanged);
             // 
-            // tbCustomFontPath
-            // 
-            resources.ApplyResources(this.tbCustomFontPath, "tbCustomFontPath");
-            this.tbCustomFontPath.Name = "tbCustomFontPath";
-            // 
-            // bSelectOwnFont
-            // 
-            resources.ApplyResources(this.bSelectOwnFont, "bSelectOwnFont");
-            this.bSelectOwnFont.Name = "bSelectOwnFont";
-            this.bSelectOwnFont.UseVisualStyleBackColor = true;
-            this.bSelectOwnFont.Click += new System.EventHandler(this.bSelectOwnFont_Click);
-            // 
             // MainForm
             // 
             resources.ApplyResources(this, "$this");
@@ -798,8 +774,5 @@
         private System.Windows.Forms.ComboBox cFilterField;
         private System.Windows.Forms.CheckBox cFilter;
         private System.Windows.Forms.CheckBox cFlatten;
-        private System.Windows.Forms.CheckBox cbCustomFont;
-        private System.Windows.Forms.Button bSelectOwnFont;
-        private System.Windows.Forms.TextBox tbCustomFontPath;
     }
 }

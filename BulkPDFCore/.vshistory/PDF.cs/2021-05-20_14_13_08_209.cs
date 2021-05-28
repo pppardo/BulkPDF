@@ -46,7 +46,7 @@ namespace BulkPDF
                 pdfStamper.AcroFields.Xfa.DomDocument.SelectNodes("//*[@name='" + name + "']")[i].Attributes.Append(attr);
             }
         }
-        internal override void EscribirCampos(PdfStamper pdfStamper, FieldWriteData field, Opciones opt)
+        internal override void EscribirCampos(bool unicode, PdfStamper pdfStamper, FieldWriteData field)
         {
             var node = pdfStamper.AcroFields.Xfa.FindDatasetsNode(field.Name);
             var text = node.OwnerDocument.CreateTextNode(field.Value);
@@ -120,7 +120,7 @@ namespace BulkPDF
             // Read only for not dynamic XFAs
             pdfStamper.AcroFields.SetFieldProperty(field.Name, "setfflags", PdfFormField.FF_READ_ONLY, null);
         }
-        internal override void EscribirCampos(PdfStamper pdfStamper, FieldWriteData field, Opciones opt)
+        internal override void EscribirCampos(bool unicode, PdfStamper pdfStamper, FieldWriteData field)
         {
             string value = field.Value;
             AcroFields.Item item = pdfStamper.AcroFields.GetFieldItem(field.Name);
@@ -140,10 +140,9 @@ namespace BulkPDF
                 string[] vs = pdfStamper.AcroFields.GetAppearanceStates(field.Name);
 
             }
-            // Different font
-            var fontPath = (opt.CustomFont) ? opt.CustomFontPath : Path.Combine(Directory.GetCurrentDirectory(), "unifont.ttf");
+
             // Unicode
-            if (opt.Unicode || opt.CustomFont)
+            if (unicode)
             {
                 BaseFont bf = BaseFont.CreateFont(Path.Combine(Directory.GetCurrentDirectory(), "unifont.ttf"), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
                 pdfStamper.AcroFields.AddSubstitutionFont(bf);
@@ -221,7 +220,7 @@ namespace BulkPDF
 
         internal abstract void HacerSoloLectura(PdfStamper pdfStamper, FieldWriteData field);
 
-        internal abstract void EscribirCampos(PdfStamper pdfStamper, FieldWriteData field, Opciones opt);
+        internal abstract void EscribirCampos(bool unicode, PdfStamper pdfStamper, FieldWriteData field);
 
         /// <summary>Genera la lista del PDF. Depende de si es Formulario Dinámico a estático</summary>
         public abstract List<PDFField> ListFields();
@@ -307,7 +306,7 @@ namespace BulkPDF
             }
         }
 
-        private byte[] GeneratePDFBytes(IEnumerable<FieldWriteData> writerFieldList, Opciones opt)
+        private byte[] GeneratePDFBytes(IEnumerable<FieldWriteData> writerFieldList, bool flatten, bool finalize, bool unicode)
         {
             PdfReader copiedPdfReader = new PdfReader(pdfReader);
             var pdfStamperMemoryStream = new MemoryStream();
@@ -317,7 +316,7 @@ namespace BulkPDF
             foreach (FieldWriteData field in writerFieldList)
             {
                 // Write
-                EscribirCampos(pdfStamper, field, opt);
+                EscribirCampos(unicode, pdfStamper, field);
 
                 // Read Only
                 if (field.MakeReadOnly)
@@ -327,12 +326,12 @@ namespace BulkPDF
             }
 
             // Global Finalize
-            if (opt.Finalize)
+            if (finalize)
             {
                 Finalizar(pdfStamper);
             }
             pdfStamper.Close();
-            byte[] content = opt.Flatten?FlattenPdfFormToBytes(pdfStamperMemoryStream.ToArray()): pdfStamperMemoryStream.ToArray();
+            byte[] content = flatten?FlattenPdfFormToBytes(pdfStamperMemoryStream.ToArray()): pdfStamperMemoryStream.ToArray();
             return content;
         }
 
@@ -384,7 +383,7 @@ namespace BulkPDF
             {
                 //writerFieldList = dataSet.listaCampos;
 
-                SaveFilledPDF(filler.opt.OutputDir + @"\" + dataSet.filename, GeneratePDFBytes(dataSet.listaCampos, filler.opt));
+                SaveFilledPDF(filler.opt.OutputDir + @"\" + dataSet.filename, GeneratePDFBytes(dataSet.listaCampos, filler.opt.Flatten, filler.opt.Finalize, filler.opt.Unicode));
 
                 //ResetFieldValue();
 
@@ -413,7 +412,7 @@ namespace BulkPDF
 
             foreach (FillData dataSet in filler.GetDataForms(pdfFields))
             {
-                PdfReader pdfReader2 = new PdfReader(GeneratePDFBytes(dataSet.listaCampos, filler.opt));
+                PdfReader pdfReader2 = new PdfReader(GeneratePDFBytes(dataSet.listaCampos, filler.opt.Flatten, filler.opt.Finalize, filler.opt.Unicode));
                 for (int i = 0; i < pdfReader2.NumberOfPages; i++)
                 {
                     copy.AddPage(copy.GetImportedPage(pdfReader2, i+1));

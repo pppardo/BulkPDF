@@ -112,63 +112,29 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="cbDataSourceColumns.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 66</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="cbDataSourceColumns.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="cbDataSourceColumns.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 24</value>
-  </data>
-  <data name="bSet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 100</value>
-  </data>
-  <data name="bSet.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
-  <data name="bSet.Size" type="System.Drawing.Size, System.Drawing">
-    <value>347, 28</value>
+    <value>12, 54</value>
   </data>
   <data name="bSet.Text" xml:space="preserve">
     <value>Auswählen</value>
   </data>
-  <data name="cbUseValueFromDataSource.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 38</value>
-  </data>
-  <data name="cbUseValueFromDataSource.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
   <data name="cbUseValueFromDataSource.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 21</value>
+    <value>212, 17</value>
   </data>
   <data name="cbUseValueFromDataSource.Text" xml:space="preserve">
     <value>Einen Wert aus der Datenquelle nutzen</value>
   </data>
-  <data name="cbReadOnly.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 10</value>
-  </data>
-  <data name="cbReadOnly.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
   <data name="cbReadOnly.Size" type="System.Drawing.Size, System.Drawing">
-    <value>165, 21</value>
+    <value>127, 17</value>
   </data>
   <data name="cbReadOnly.Text" xml:space="preserve">
     <value>Schreibschutz setzen</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>379, 143</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -535,13 +501,8 @@
         wAMAAMABAADAAQAAwAEAAMABAADAAQAAwAEAAMABAAAAAQAAAAEAAAABAAAAAQAAwAEAAOABAADwAQAA
 </value>
   </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 4, 4, 4</value>
-  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>Manual</value>
-  </data>
-  <data name="labelRow.Text" xml:space="preserve">
-    <value>PDF-Zeile</value>
   </data>
 </root>

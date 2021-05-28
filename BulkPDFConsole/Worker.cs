@@ -6,18 +6,15 @@ using BulkPDF;
 using System.Xml.Linq;
 using System.IO;
 
+
 namespace BulkPDFConsole
 {
     class Worker
     {
         IDataSource dataSource;
         PDF pdf;
-        string prefix;
-        string suffix;
-        int DataSourceColumnsFilenameIndex;
-        bool useRowNumber;
-        bool useValueFromDataSource;
-
+        Opciones opt;
+        
 
         public bool Do(string configurationFilePath)
         {
@@ -37,8 +34,8 @@ namespace BulkPDFConsole
 
                 // PDF
                 Console.WriteLine("Load PDF");
-                pdf = new PDF();
-                pdf.Open(Environment.ExpandEnvironmentVariables(xmlOptions.Element("PDF").Element("Filepath").Value));
+                
+                pdf = PDF.Open(Environment.ExpandEnvironmentVariables(xmlOptions.Element("PDF").Element("Filepath").Value));
 
                 //// PDFFieldValues
                 Console.WriteLine("Load field configuration");
@@ -47,50 +44,20 @@ namespace BulkPDFConsole
                 {
                     var pdfField = new PDFField();
                     pdfField.Name = node.Element("Name").Value;
-                    pdfField.DataSourceValue = node.Element("NewValue").Value;
-                    pdfField.UseValueFromDataSource = Convert.ToBoolean(node.Element("UseValueFromDataSource").Value);
-                    pdfField.MakeReadOnly = Convert.ToBoolean(node.Element("MakeReadOnly").Value);
-                    
+                    pdfField.Rellena(node);
                     pdfFields.Add(pdfField.Name, pdfField);
                 }
 
-                //// Filename
-                Console.WriteLine("Load filename options");
-                var xmlFilename = xmlOptions.Element("Filename");
-                prefix = xmlFilename.Element("Prefix").Value;
-                useValueFromDataSource = Convert.ToBoolean(xmlFilename.Element("ValueFromDataSource").Value);
-                DataSourceColumnsFilenameIndex = ((Spreadsheet)dataSource).Columns.IndexOf(xmlFilename.Element("DataSource").Value);
-                suffix = xmlFilename.Element("Suffix").Value;
-                useRowNumber = Convert.ToBoolean(xmlFilename.Element("RowNumber").Value);
-
-                //// Other
-                Console.WriteLine("Load general options");
-                bool finalize = Convert.ToBoolean(xmlOptions.Element("Finalize").Value);
-                bool unicode = false;
-                try
-                {
-                    unicode = Convert.ToBoolean(xmlOptions.Element("Unicode").Value);
-                }
-                catch
-                {
-                    // Ignore. Ugly but don't hurt anyone.
-                }
-                bool customFont = false;
-                string customFontPath = "";
-                try
-                {
-                    customFont = Convert.ToBoolean(xmlOptions.Element("CustomFont").Value);
-                    customFontPath = Environment.ExpandEnvironmentVariables(xmlOptions.Element("CustomFontPath").Value);
-                }
-                catch
-                {
-                    // Ignore. Ugly but don't hurt anyone.
-                }
-                string outputDir = Environment.ExpandEnvironmentVariables(xmlOptions.Element("OutputDir").Value);
+                //// Carga opciones
+                Console.WriteLine("Load options");
+                opt = Opciones.Load(xmlOptions, dataSource);
 
 
                 Console.WriteLine("--- Start processing ---");
-                PDFFiller.CreateFiles(pdf, finalize, unicode, customFont, customFontPath, dataSource, pdfFields, outputDir + @"\", ConcatFilename, WriteLinePercent);
+                //  -- OLD PDFFiller.CreateFiles(pdf, dataSource, pdfFields, opt, ConcatFilename, WriteLinePercent, null); 
+                PDFFiller filler = new PDFFiller(pdf, dataSource, opt, ConcatFilename);
+                pdf.CreateFiles(filler, pdfFields, WriteLinePercent, null);
+
                 Console.WriteLine("!!! Finished !!!");
             }
             catch (Exception e)
@@ -102,18 +69,9 @@ namespace BulkPDFConsole
             return true;
         }
 
-        private string ConcatFilename(int dataSourceRow)
+        private string ConcatFilename(int pageGroup)
         {
-            string filename = "";
-            filename += prefix;
-            if (useValueFromDataSource)
-                filename += dataSource.GetField(DataSourceColumnsFilenameIndex + 1);
-            filename += suffix;
-            if (useRowNumber)
-                filename += dataSourceRow;
-            filename += ".pdf";
-
-            return filename;
+            return Opciones.ConcatFilename(dataSource, opt, pageGroup);
         }
 
         private void WriteLinePercent(int percent)

@@ -484,9 +484,6 @@ namespace BulkPDF
             tbOutputDir.Text = newOpt.OutputDir;
             cFlatten.Checked = newOpt.Flatten;
             cFusion.Checked = newOpt.Fusion;
-            // Custom Font
-            cbCustomFont.Checked = newOpt.CustomFont;
-            tbCustomFontPath.Text = newOpt.CustomFontPath;
         }
         // Sincroniza las opciones con los controles
         private void SincronizaOpciones()
@@ -515,10 +512,6 @@ namespace BulkPDF
             opt.UseRowNumber = cUseRowNumber.Checked;                        // Convert.ToBoolean(xmlFilename.Element("RowNumber").Value);
             opt.UsePag = cUsePag.Checked;                                         // Convert.ToBoolean(xmlFilename.Element("UseGroup").Value);
             opt.OutputDir = tbOutputDir.Text;
-
-            // Custom Font
-            opt.CustomFont = cbCustomFont.Checked;
-            opt.CustomFontPath = tbCustomFontPath.Text;
         }
 
         private void PopulateFilterOperators()
@@ -647,7 +640,7 @@ namespace BulkPDF
             // Select File
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            openFileDialog.Filter = "Spreadsheet|*.xlsx;*.xlsm";
+            openFileDialog.Filter = "Spreadsheet|*.xlsx;*.xlsm;*.odc;*.ods";
             openFileDialog.FilterIndex = 1;
             openFileDialog.Multiselect = false;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -715,20 +708,6 @@ namespace BulkPDF
         {
             var donateForm = new DonateForm();
             donateForm.ShowDialog();
-        }
-
-        private void bSelectOwnFont_Click(object sender, EventArgs e)
-        {
-            // Select File
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            openFileDialog.Filter = "Font|*.ttf;";
-            openFileDialog.FilterIndex = 1;
-            openFileDialog.Multiselect = false;
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                tbCustomFontPath.Text = openFileDialog.FileName;
-            }
         }
     }
 }

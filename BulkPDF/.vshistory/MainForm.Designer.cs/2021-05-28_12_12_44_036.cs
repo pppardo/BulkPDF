@@ -70,7 +70,6 @@
             this.bSelectPDF = new System.Windows.Forms.Button();
             this.tpFinish = new System.Windows.Forms.TabPage();
             this.gbOptions = new System.Windows.Forms.GroupBox();
-            this.cbCustomFont = new System.Windows.Forms.CheckBox();
             this.cFilterCheck = new System.Windows.Forms.ComboBox();
             this.cFilterField = new System.Windows.Forms.ComboBox();
             this.cFilter = new System.Windows.Forms.CheckBox();
@@ -103,8 +102,7 @@
             this.cSufix1 = new System.Windows.Forms.TextBox();
             this.cDataSourceColumnsFilename = new System.Windows.Forms.ComboBox();
             this.cPrefix = new System.Windows.Forms.TextBox();
-            this.tbCustomFontPath = new System.Windows.Forms.TextBox();
-            this.bSelectOwnFont = new System.Windows.Forms.Button();
+            this.cbCustomFont = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.wizardPages.SuspendLayout();
             this.tpWelcome.SuspendLayout();
@@ -426,8 +424,6 @@
             // gbOptions
             // 
             resources.ApplyResources(this.gbOptions, "gbOptions");
-            this.gbOptions.Controls.Add(this.bSelectOwnFont);
-            this.gbOptions.Controls.Add(this.tbCustomFontPath);
             this.gbOptions.Controls.Add(this.cbCustomFont);
             this.gbOptions.Controls.Add(this.cFilterCheck);
             this.gbOptions.Controls.Add(this.cFilterField);
@@ -442,12 +438,6 @@
             this.gbOptions.Controls.Add(this.cGroupByColumn);
             this.gbOptions.Name = "gbOptions";
             this.gbOptions.TabStop = false;
-            // 
-            // cbCustomFont
-            // 
-            resources.ApplyResources(this.cbCustomFont, "cbCustomFont");
-            this.cbCustomFont.Name = "cbCustomFont";
-            this.cbCustomFont.UseVisualStyleBackColor = true;
             // 
             // cFilterCheck
             // 
@@ -673,17 +663,11 @@
             this.cPrefix.Name = "cPrefix";
             this.cPrefix.TextChanged += new System.EventHandler(this.cFilenameChanged);
             // 
-            // tbCustomFontPath
+            // cbCustomFont
             // 
-            resources.ApplyResources(this.tbCustomFontPath, "tbCustomFontPath");
-            this.tbCustomFontPath.Name = "tbCustomFontPath";
-            // 
-            // bSelectOwnFont
-            // 
-            resources.ApplyResources(this.bSelectOwnFont, "bSelectOwnFont");
-            this.bSelectOwnFont.Name = "bSelectOwnFont";
-            this.bSelectOwnFont.UseVisualStyleBackColor = true;
-            this.bSelectOwnFont.Click += new System.EventHandler(this.bSelectOwnFont_Click);
+            resources.ApplyResources(this.cbCustomFont, "cbCustomFont");
+            this.cbCustomFont.Name = "cbCustomFont";
+            this.cbCustomFont.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -799,7 +783,5 @@
         private System.Windows.Forms.CheckBox cFilter;
         private System.Windows.Forms.CheckBox cFlatten;
         private System.Windows.Forms.CheckBox cbCustomFont;
-        private System.Windows.Forms.Button bSelectOwnFont;
-        private System.Windows.Forms.TextBox tbCustomFontPath;
     }
 }

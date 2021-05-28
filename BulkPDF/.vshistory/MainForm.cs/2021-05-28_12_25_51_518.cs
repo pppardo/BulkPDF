@@ -484,9 +484,17 @@ namespace BulkPDF
             tbOutputDir.Text = newOpt.OutputDir;
             cFlatten.Checked = newOpt.Flatten;
             cFusion.Checked = newOpt.Fusion;
-            // Custom Font
-            cbCustomFont.Checked = newOpt.CustomFont;
-            tbCustomFontPath.Text = newOpt.CustomFontPath;
+
+            // Custom Fonts
+            try
+            {
+                cbCustomFont.Checked = Convert.ToBoolean(xmlOptions.Element("CustomFont").Value);
+                tbCustomFontPath.Text = Environment.ExpandEnvironmentVariables(xmlOptions.Element("CustomFontPath").Value);
+            }
+            catch
+            {
+                // Ignore. Ugly but don't hurt anyone.
+            }
         }
         // Sincroniza las opciones con los controles
         private void SincronizaOpciones()
@@ -515,10 +523,6 @@ namespace BulkPDF
             opt.UseRowNumber = cUseRowNumber.Checked;                        // Convert.ToBoolean(xmlFilename.Element("RowNumber").Value);
             opt.UsePag = cUsePag.Checked;                                         // Convert.ToBoolean(xmlFilename.Element("UseGroup").Value);
             opt.OutputDir = tbOutputDir.Text;
-
-            // Custom Font
-            opt.CustomFont = cbCustomFont.Checked;
-            opt.CustomFontPath = tbCustomFontPath.Text;
         }
 
         private void PopulateFilterOperators()
@@ -647,7 +651,7 @@ namespace BulkPDF
             // Select File
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            openFileDialog.Filter = "Spreadsheet|*.xlsx;*.xlsm";
+            openFileDialog.Filter = "Spreadsheet|*.xlsx;*.xlsm;*.odc;*.ods";
             openFileDialog.FilterIndex = 1;
             openFileDialog.Multiselect = false;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
